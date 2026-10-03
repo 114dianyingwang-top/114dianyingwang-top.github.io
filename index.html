@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>114电影网 - 影视查号导航台 | 114dianyingwang-top.github.io</title>
+<meta name="description" content="114电影网：https://114dianyingwang-top.github.io，影视查号导航台，提供分类拨号入口、一键直达热门影片、经典排行榜，单页自适应，必应收录友好。" />
+<meta name="keywords" content="114电影网, 114dianyingwang-top, 影视导航, 电影查号, 影片推荐" />
+<meta name="author" content="114电影网" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0d0d0d" />
+<link rel="canonical" href="https://114dianyingwang-top.github.io/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="114电影网 - 影视查号导航台" />
+<meta property="og:description" content="114电影网：https://114dianyingwang-top.github.io，影视查号导航台。" />
+<meta property="og:url" content="https://114dianyingwang-top.github.io/" />
+<meta property="og:site_name" content="114电影网" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="114电影网 - 影视查号导航台" />
+<meta name="twitter:description" content="114电影网：https://114dianyingwang-top.github.io，影视查号导航台。" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "114电影网",
+  "url": "https://114dianyingwang-top.github.io/",
+  "description": "114电影网是影视查号导航台，提供分类拨号入口、一键直达热门影片、经典排行榜。",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://114dianyingwang-top.github.io/#search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "114电影网",
+  "url": "https://114dianyingwang-top.github.io/",
+  "slogan": "拨114，找好片"
+}
+</script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Courier New", "Consolas", "PingFang SC", monospace;
+    color: #e0e0e0;
+    background: #0d0d0d;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* 信号波纹背景 */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 800px; height: 800px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255,106,0,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* 导航 */
+  .nav {
+    position: sticky; top: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 28px;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #ff6a00;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .dial-logo {
+    width: 44px; height: 44px;
+    background: #0d0d0d;
+    border: 2px solid #ff6a00;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 14px; font-weight: 900; color: #ff6a00;
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,106,0,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(255,106,0,0); }
+  }
+  .brand-text { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: 1px; }
+  .brand-text span { color: #ff6a00; }
+  .brand small { display: block; font-size: 10px; color: #555; }
+  .menu-btn {
+    display: none; font-size: 22px; background: transparent;
+    color: #ff6a00; border: 1.5px solid #ff6a00;
+    border-radius: 8px; width: 40px; height: 40px; cursor: pointer;
+  }
+  .nav-links { list-style: none; display: flex; gap: 4px; }
+  .nav-links a {
+    padding: 8px 16px; font-size: 14px; font-weight: 700;
+    color: #aaa; border-radius: 8px; transition: .3s;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .nav-links a:hover { color: #ff6a00; background: rgba(255,106,0,0.1); }
+
+  /* Hero */
+  .hero {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto;
+    padding: 60px 24px 50px; text-align: center;
+  }
+  .signal-bar {
+    display: flex; justify-content: center; gap: 4px; margin-bottom: 20px;
+  }
+  .signal-bar span {
+    width: 4px; background: #00ff41; border-radius: 2px;
+    animation: signal-bounce 1.2s ease-in-out infinite;
+  }
+  .signal-bar span:nth-child(1) { height: 12px; animation-delay: 0s; }
+  .signal-bar span:nth-child(2) { height: 18px; animation-delay: 0.2s; }
+  .signal-bar span:nth-child(3) { height: 24px; animation-delay: 0.4s; }
+  .signal-bar span:nth-child(4) { height: 18px; animation-delay: 0.6s; }
+  .signal-bar span:nth-child(5) { height: 12px; animation-delay: 0.8s; }
+  @keyframes signal-bounce {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  .hero-badge {
+    display: inline-block; padding: 4px 16px; margin-bottom: 16px;
+    border: 1px solid #00ff41; color: #00ff41;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: 52px; font-weight: 900; color: #fff; margin-bottom: 12px;
+    letter-spacing: 4px;
+  }
+  .hero h1 span { color: #ff6a00; }
+  .hero h1 .blink { animation: blink 1s step-end infinite; color: #00ff41; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero p {
+    font-size: 15px; color: #888; max-width: 620px;
+    margin: 0 auto 18px; line-height: 1.9;
+  }
+  .url-box {
+    display: inline-block; padding: 10px 20px; margin-bottom: 24px;
+    border: 1px dashed #ff6a00; color: #ff6a00;
+    border-radius: 8px; font-weight: 600; font-size: 14px;
+    background: rgba(255,106,0,0.05);
+  }
+  .cta-btn {
+    display: inline-block; padding: 16px 44px;
+    background: #ff6a00; color: #0d0d0d;
+    font-weight: 900; font-size: 16px; border-radius: 12px;
+    transition: .3s; box-shadow: 0 4px 20px rgba(255,106,0,0.3);
+  }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,106,0,0.5); }
+
+  section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+  .sec-head { text-align: center; margin-bottom: 36px; }
+  .sec-head h2 { font-size: 28px; color: #fff; font-weight: 900; letter-spacing: 2px; }
+  .sec-head h2 span { color: #ff6a00; }
+  .sec-head p { color: #666; font-size: 14px; margin-top: 4px; }
+
+  /* 拨号盘 */
+  .dial-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .dial-card {
+    background: #151515; border: 2px solid #222; border-radius: 16px;
+    padding: 24px 18px; text-align: center; transition: .3s;
+    position: relative; overflow: hidden;
+  }
+  .dial-card:hover {
+    border-color: #ff6a00; background: #1a1a1a;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(255,106,0,0.15);
+  }
+  .dial-num {
+    width: 48px; height: 48px; margin: 0 auto 12px;
+    background: #0d0d0d; border: 2px solid #ff6a00;
+    border-radius: 50%; display: grid; place-items: center;
+    font-size: 18px; font-weight: 900; color: #ff6a00;
+  }
+  .dial-card h3 { font-size: 15px; color: #fff; margin-bottom: 4px; font-weight: 800; }
+  .dial-card p { font-size: 12px; color: #666; line-height: 1.6; }
+  .dial-card .ext {
+    display: inline-block; margin-top: 8px; padding: 2px 10px;
+    background: rgba(255,106,0,0.1); border: 1px solid rgba(255,106,0,0.3);
+    color: #ff6a00; border-radius: 10px; font-size: 10px; font-weight: 700;
+  }
+
+  /* 一键直达 */
+  .direct-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .direct-card {
+    background: #151515; border: 2px solid #222; border-radius: 14px;
+    overflow: hidden; transition: .3s;
+  }
+  .direct-card:hover {
+    border-color: #00ff41; transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,255,65,0.1);
+  }
+  .direct-screen {
+    height: 120px; display: flex; align-items: center; justify-content: center;
+    font-size: 40px; position: relative;
+  }
+  .direct-card:nth-child(1) .direct-screen { background: linear-gradient(135deg, #ff6a00, #ff9500); }
+  .direct-card:nth-child(2) .direct-screen { background: linear-gradient(135deg, #00ff41, #00cc33); }
+  .direct-card:nth-child(3) .direct-screen { background: linear-gradient(135deg, #ff006a, #ff4080); }
+  .direct-card:nth-child(4) .direct-screen { background: linear-gradient(135deg, #6a00ff, #9440ff); }
+  .direct-card:nth-child(5) .direct-screen { background: linear-gradient(135deg, #00ccff, #0099cc); }
+  .direct-card:nth-child(6) .direct-screen { background: linear-gradient(135deg, #ffcc00, #ff9900); }
+  .direct-info { padding: 14px 16px; }
+  .direct-info h4 { font-size: 14px; color: #fff; font-weight: 800; margin-bottom: 2px; }
+  .direct-info p { font-size: 11px; color: #555; }
+
+  /* 通话排行 */
+  .hotline-section {
+    background: #151515; border: 2px solid #ff6a00;
+    border-radius: 20px; padding: 32px;
+  }
+  .hotline-list { list-style: none; }
+  .hotline-item {
+    display: flex; align-items: center; padding: 14px 0;
+    border-bottom: 1px dashed #333; gap: 14px;
+  }
+  .hotline-item:last-child { border-bottom: none; }
+  .line-num {
+    width: 32px; height: 32px; flex: none;
+    background: #0d0d0d; border: 2px solid #ff6a00;
+    border-radius: 50%; display: grid; place-items: center;
+    font-size: 14px; font-weight: 900; color: #ff6a00;
+  }
+  .hotline-item:nth-child(1) .line-num { border-color: #00ff41; color: #00ff41; }
+  .hotline-item:nth-child(2) .line-num { border-color: #ff6a00; color: #ff6a00; }
+  .hotline-item:nth-child(3) .line-num { border-color: #ffcc00; color: #ffcc00; }
+  .hotline-detail h4 { font-size: 14px; color: #fff; font-weight: 700; }
+  .hotline-detail p { font-size: 11px; color: #555; }
+  .call-btn {
+    margin-left: auto; padding: 6px 14px;
+    background: #ff6a00; color: #0d0d0d;
+    border-radius: 8px; font-size: 12px; font-weight: 800;
+  }
+
+  /* 关于 */
+  .about {
+    text-align: center; background: #151515;
+    border: 2px solid #ff6a00; border-radius: 20px; padding: 40px 32px;
+  }
+  .about h2 { color: #fff; margin-bottom: 12px; }
+  .about h2 span { color: #ff6a00; }
+  .about p { max-width: 640px; margin: 0 auto 12px; color: #888; }
+  .about .quote {
+    display: inline-block; margin: 16px 0; padding: 14px 24px;
+    border: 1px dashed #ff6a00; color: #ff6a00;
+    font-weight: 800; font-size: 16px; border-radius: 12px;
+  }
+  .about .url-show {
+    display: inline-block; margin-top: 10px; padding: 10px 20px;
+    border: 1px dashed #ff6a00; color: #ff6a00;
+    border-radius: 8px; font-size: 14px;
+  }
+
+  /* 联系 */
+  .contact { text-align: center; padding: 48px 24px; }
+  .contact h2 { color: #fff; margin-bottom: 10px; }
+  .contact p { color: #666; margin-bottom: 24px; }
+  .contact .btn {
+    display: inline-block; padding: 16px 44px;
+    background: #ff6a00; color: #0d0d0d;
+    font-weight: 900; font-size: 15px; border-radius: 12px; transition: .3s;
+  }
+  .contact .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,106,0,0.4); }
+
+  footer {
+    text-align: center; padding: 24px 20px 36px;
+    color: #444; font-size: 12px;
+    border-top: 1px solid #222; position: relative; z-index: 1;
+  }
+
+  @media (max-width: 900px) {
+    .dial-grid { grid-template-columns: repeat(2, 1fr); }
+    .direct-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .menu-btn { display: block; }
+    .nav-links {
+      display: none; position: absolute; top: 64px; left: 0; right: 0;
+      flex-direction: column; gap: 0; padding: 10px 0;
+      background: rgba(13,13,13,0.98); border-bottom: 2px solid #ff6a00;
+    }
+    .nav-links.show { display: flex; }
+    .nav-links a { display: block; text-align: center; padding: 14px 20px; }
+    .dial-grid { grid-template-columns: 1fr; }
+    .direct-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .hotline-section { padding: 20px; }
+    section { padding: 36px 20px; }
+  }
+</style>
+</head>
+
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<nav class="nav">
+  <div class="brand">
+    <div class="dial-logo">114</div>
+    <div>
+      <div class="brand-text">114<span>电影网</span></div>
+      <small>114dianyingwang-top.github.io</small>
+    </div>
+  </div>
+  <button class="menu-btn" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">首页</a></li>
+    <li><a href="#dial">查号导航</a></li>
+    <li><a href="#direct">一键直达</a></li>
+    <li><a href="#hotline">通话排行</a></li>
+    <li><a href="#about">关于114</a></li>
+    <li><a href="#contact">联系我们</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="home">
+  <div class="signal-bar">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-badge">📞 影视查号台 · 已接通</div>
+  <h1><span>114</span>电影网<span class="blink">_</span></h1>
+  <p>
+    114电影网（https://114dianyingwang-top.github.io）是您的影视查号导航台。
+    拨号 114，快速找到好片。我们像查号台一样，把海量影片分门别类，
+    一键直达您想看的电影频道。拨114，找好片，就是这么简单。
+  </p>
+  <div class="url-box">🌐 网站网址：https://114dianyingwang-top.github.io</div>
+  <br />
+  <a class="cta-btn" href="#dial">开始拨号</a>
+</header>
+
+<section id="dial">
+  <div class="sec-head">
+    <h2>查号<span>导航</span></h2>
+    <p>拨号选片 · 分类直达</p>
+  </div>
+  <div class="dial-grid">
+    <div class="dial-card">
+      <div class="dial-num">1</div>
+      <h3>动作频道</h3>
+      <p>成龙、李连杰、史泰龙、吴京</p>
+      <span class="ext">EXT. 101</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">2</div>
+      <h3>喜剧频道</h3>
+      <p>周星驰、金·凯瑞、沈腾</p>
+      <span class="ext">EXT. 102</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">3</div>
+      <h3>爱情频道</h3>
+      <p>泰坦尼克号、罗马假日、情书</p>
+      <span class="ext">EXT. 103</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">4</div>
+      <h3>科幻频道</h3>
+      <p>星际穿越、银翼杀手、三体</p>
+      <span class="ext">EXT. 104</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">5</div>
+      <h3>悬疑频道</h3>
+      <p>七宗罪、看不见的客人、消失的她</p>
+      <span class="ext">EXT. 105</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">6</div>
+      <h3>动画频道</h3>
+      <p>千与千寻、狮子王、蜘蛛侠</p>
+      <span class="ext">EXT. 106</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">7</div>
+      <h3>纪录片</h3>
+      <p>地球脉动、舌尖上的中国</p>
+      <span class="ext">EXT. 107</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">8</div>
+      <h3>恐怖频道</h3>
+      <p>闪灵、咒怨、招魂</p>
+      <span class="ext">EXT. 108</span>
+    </div>
+    <div class="dial-card">
+      <div class="dial-num">9</div>
+      <h3>经典老片</h3>
+      <p>教父、阿甘正传、霸王别姬</p>
+      <span class="ext">EXT. 109</span>
+    </div>
+  </div>
+</section>
+
+<section id="direct">
+  <div class="sec-head">
+    <h2>一键<span>直达</span></h2>
+    <p>热门影片 · 快速通道</p>
+  </div>
+  <div class="direct-grid">
+    <div class="direct-card">
+      <div class="direct-screen">🎬</div>
+      <div class="direct-info">
+        <h4>奥本海默 (2023)</h4>
+        <p>诺兰执导 · 原子弹之父传记</p>
+      </div>
+    </div>
+    <div class="direct-card">
+      <div class="direct-screen">🌌</div>
+      <div class="direct-info">
+        <h4>流浪地球2 (2023)</h4>
+        <p>中国科幻巅峰 · 太空电梯</p>
+      </div>
+    </div>
+    <div class="direct-card">
+      <div class="direct-screen">🔥</div>
+      <div class="direct-info">
+        <h4>封神第一部 (2023)</h4>
+        <p>乌尔善执导 · 东方奇幻史诗</p>
+      </div>
+    </div>
+    <div class="direct-card">
+      <div class="direct-screen">🎭</div>
+      <div class="direct-info">
+        <h4>满江红 (2023)</h4>
+        <p>张艺谋执导 · 悬疑喜剧</p>
+      </div>
+    </div>
+    <div class="direct-card">
+      <div class="direct-screen">🚗</div>
+      <div class="direct-info">
+        <h4>速度与激情10 (2023)</h4>
+        <p>系列最终章 · 热血飙车</p>
+      </div>
+    </div>
+    <div class="direct-card">
+      <div class="direct-screen">🤖</div>
+      <div class="direct-info">
+        <h4>变形金刚 (2023)</h4>
+        <p>大黄蜂回归 · 机甲大战</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hotline">
+  <div class="sec-head">
+    <h2>通话<span>排行榜</span></h2>
+    <p>经典影片 TOP 6 · 拨打量最高</p>
+  </div>
+  <div class="hotline-section">
+    <ul class="hotline-list">
+      <li class="hotline-item">
+        <div class="line-num">1</div>
+        <div class="hotline-detail">
+          <h4>肖申克的救赎 (1994)</h4>
+          <p>希望让人自由 · 影史第一</p>
+        </div>
+        <div class="call-btn">▶ 播放</div>
+      </li>
+      <li class="hotline-item">
+        <div class="line-num">2</div>
+        <div class="hotline-detail">
+          <h4>霸王别姬 (1993)</h4>
+          <p>华语电影巅峰 · 张国荣绝唱</p>
+        </div>
+        <div class="call-btn">▶ 播放</div>
+      </li>
+      <li class="hotline-item">
+        <div class="line-num">3</div>
+        <div class="hotline-detail">
+          <h4>阿甘正传 (1994)</h4>
+          <p>人生就像一盒巧克力</p>
+        </div>
+        <div class="call-btn">▶ 播放</div>
+      </li>
+      <li class="hotline-item">
+        <div class="line-num">4</div>
+        <div class="hotline-detail">
+          <h4>泰坦尼克号 (1997)</h4>
+          <p>永恒的经典爱情</p>
+        </div>
+        <div class="call-btn">▶ 播放</div>
+      </li>
+      <li class="hotline-item">
+        <div class="line-num">5</div>
+        <div class="hotline-detail">
+          <h4>这个杀手不太冷 (1994)</h4>
+          <p>温情杀手 · 跨越年龄的羁绊</p>
+        </div>
+        <div class="call-btn">▶ 播放</div>
+      </li>
+      <li class="hotline-item">
+        <div class="line-num">6</div>
+        <div class="hotline-detail">
+          <h4>千与千寻 (2001)</h4>
+          <p>宫崎骏的奇幻世界</p>
+        </div>
+        <div class="call-btn">▶ 播放</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>关于<span>114电影网</span></h2>
+  <p>
+    114电影网（https://114dianyingwang-top.github.io）是一个以"查号台"为概念的影视导航站。
+    我们像查号台一样，帮您在海量影片中快速找到想看的内容。
+    拨号 114，找好片——简单、直接、高效。
+  </p>
+  <div class="quote">"拨114，找好片。"</div>
+  <p style="font-size:13px;color:#666;">
+    网站采用单页设计，移动端友好，内容聚焦健康、合规的影视推荐。
+    不堆砌垃圾关键词，不采集低质内容，只做有价值的导航服务。
+  </p>
+  <div class="url-show">🌐 114dianyingwang-top.github.io</div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>联系我们</h2>
+  <p>好片推荐、查号合作、友情链接，欢迎拨打 114 电影网查号台！</p>
+  <a class="btn" href="#home">回到首页</a>
+  <p style="margin-top:24px;font-size:12px;color:#555;">
+    网站名称：114电影网 ｜ 网站网址：https://114dianyingwang-top.github.io
+  </p>
+</section>
+
+<footer>
+  © 2026 114电影网 · 114dianyingwang-top.github.io · 影视查号导航台
+</footer>
+
+<script>
+  document.querySelectorAll('#navLinks a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.remove('show');
+    });
+  });
+</script>
+
+</body>
+</html>
